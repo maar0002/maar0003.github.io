@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () =>{
     let guessedWords = [[]];
     let availableSpace = 1;
 
-    let word = 'dairy';
+    let word = 'pupil';
     let guessedWordCount = 0;
 
    
