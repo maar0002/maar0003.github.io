@@ -9,18 +9,7 @@ document.addEventListener("DOMContentLoaded", () =>{
     let word = 'dairy';
     let guessedWordCount = 0;
 
-    for (let i = 0; i < keys.length; i++) {
-        keys[i].onclick = ({ target }) => {
-            const letter = target.getAttribute('data-key');
-
-            if (letter === 'enter') {
-                handleSubmitWord();
-                return;
-            }
-
-            updateGuessedWords(letter);
-        }
-    }
+   
 
     function getCurrentWordArr() {
         const numberOfGuessedWords = guessedWords.length;
@@ -95,6 +84,18 @@ document.addEventListener("DOMContentLoaded", () =>{
         guessedWords.push([]);
     }
 
+    function handleDeleteLetter() {
+        const currentWordArr = getCurrentWordArr();
+        const removedLetter = currentWordArr.pop();
+
+        guessedWords[guessedWords.length - 1] = currentWordArr;
+
+        const lastLetterEl = document.getElementById(String(availableSpace - 1));
+
+        lastLetterEl.textContent= "";
+        availableSpace = availableSpace - 1;
+    }
+
     function createSquares() {
         const gameBoard = document.getElementById("board");
 
@@ -107,5 +108,22 @@ document.addEventListener("DOMContentLoaded", () =>{
         }
     }
 
+    for (let i = 0; i < keys.length; i++) {
+        keys[i].onclick = ({ target }) => {
+            const letter = target.getAttribute('data-key');
+
+            if (letter === 'enter') {
+                handleSubmitWord();
+                return;
+            }
+
+            if (letter === 'del') {
+                handleDeleteLetter();
+                return;
+            }
+
+            updateGuessedWords(letter);
+        }
+    }
     
 });
