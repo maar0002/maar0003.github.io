@@ -153,7 +153,6 @@ document.addEventListener("DOMContentLoaded", () =>{
                 const isIncorrectKeyboardLetter = word.includes(letter);
 
                 if (!isIncorrectKeyboardLetter) {
-                    keyId.disabled = true;
                     keyId.style = `background-color:${keyboardColor};`;
                 }
                 
