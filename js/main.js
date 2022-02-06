@@ -30,22 +30,11 @@ document.addEventListener("DOMContentLoaded", () =>{
         return words;
     }
 
+    console.log(word);
+
     function getCurrentWordArr() {
         const numberOfGuessedWords = guessedWords.length;
         return guessedWords[numberOfGuessedWords - 1];
-    }
-
-    function updateGuessedWords(letter) {
-        const currentWordArr = getCurrentWordArr();
-        
-        if (currentWordArr && currentWordArr.length < 5) {
-            currentWordArr.push(letter);
-
-            const availableSpaceEl = document.getElementById(String(availableSpace));
-
-            availableSpace = availableSpace + 1;
-            availableSpaceEl.textContent = letter;
-        }
     }
 
     function createSquares() {
@@ -59,6 +48,23 @@ document.addEventListener("DOMContentLoaded", () =>{
             gameBoard.appendChild(square);
         }
     }
+
+    function updateGuessedWords(letter) {
+        const currentWordArr = getCurrentWordArr();
+        
+        
+
+        if (currentWordArr && currentWordArr.length < 5) {
+            currentWordArr.push(letter);
+
+            const availableSpaceEl = document.getElementById(String(availableSpace));
+
+            availableSpace = availableSpace + 1;
+            availableSpaceEl.textContent = letter;
+        }
+    }
+
+   
 
     function changeKeyboardColor(letter) {
         const isIncorrectKeyboardLetter = word.includes(letter);
@@ -95,7 +101,40 @@ document.addEventListener("DOMContentLoaded", () =>{
             currentWordArr = 0;
         }
 
+        
+
         const currentWord = currentWordArr.join('');
+
+
+         //beta code
+
+
+        const match = guessedWords.some(currentWord=> words.includes(currentWord) >= 0);
+
+        let wordMatch = false;
+
+        for (let i = 0; i < words.length; i++) {
+            let word = words[i];
+            if (word == currentWord) {
+                wordMatch = true;
+                break;        
+            }
+        }
+
+        if (wordMatch === false) {
+            window.alert("word isn't valid");
+            currentWordArr = 0;
+        }
+
+        // if (words.includes(currentWord.value)) {
+        //     console.log('test');
+        // }
+
+        // else {
+        //     console.log('othjer');
+        // }
+
+        //
 
         const firstLetterId = guessedWordCount * 5 + 1;
         const interval = 300;
@@ -129,7 +168,7 @@ document.addEventListener("DOMContentLoaded", () =>{
             window.alert("yay");
         }
 
-        if (guessedWords.length === 6) {
+        if (guessedWords.length === 6 && currentWord !== word) {
             window.alert(`sad face the word is ${word}`);
         }
 
