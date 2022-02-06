@@ -53,9 +53,9 @@ header{
 
 .square {
     border: 2px solid rgb(58, 58, 60);
-    min-width: 60px;
-    min-height: 60px;
-    font-size: 50px;
+    min-width: 50px;
+    min-height: 50px;
+    font-size: 40px;
     font-weight: bold;
     color: whitesmoke;
     text-transform: uppercase;
@@ -98,4 +98,12 @@ header{
 
 .spacer-half{
     flex-grow: 0.5;
+}
+
+@media screen and (min-width: 700px) {
+    .square{
+        min-width: 60px;
+        min-height: 60px;
+        font-size: 50px;
+    }
 }
