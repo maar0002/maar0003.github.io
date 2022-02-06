@@ -1,6 +1,3 @@
-
-
-
 document.addEventListener("DOMContentLoaded", () =>{
     
     createSquares();
@@ -35,6 +32,28 @@ document.addEventListener("DOMContentLoaded", () =>{
             availableSpaceEl.textContent = letter;
         }
     }
+
+    function createSquares() {
+        const gameBoard = document.getElementById("board");
+
+        for (let index=0; index < 30; index++) {
+            let square = document.createElement("div");
+            square.classList.add("square");
+            square.classList.add("animate__animated");
+            square.setAttribute("id", index + 1);
+            gameBoard.appendChild(square);
+        }
+    }
+
+    function changeKeyboardColor(letter) {
+        const isIncorrectKeyboardLetter = word.includes(letter);
+
+        if (!isIncorrectKeyboardLetter) {
+            return "rgb(58, 58, 60)";
+        }
+    }
+
+    //beta code 
 
     function getTileColor(letter, index) {
         const isCorrectLetter = word.includes(letter);
@@ -76,7 +95,21 @@ document.addEventListener("DOMContentLoaded", () =>{
                 letterEl.classList.add("animate__flipInX");
                 letterEl.style = `background-color:${tileColor};border-color:${tileColor}`;
 
+                const keyboardColor = changeKeyboardColor(letter, index);
+
+                const keyId = document.querySelector(`[data-key=${letter}]`)
+                // const keyId = 'key' + letterId;
+                // const keyEl = keyId + letter;
+                const isIncorrectKeyboardLetter = word.includes(letter);
+
+                if (!isIncorrectKeyboardLetter) {
+                    keyId.disabled = true;
+                    keyId.style = `background-color:${keyboardColor};`;
+                }
+                
+
             }, interval * index);
+
         });
 
         guessedWordCount += 1;
@@ -104,17 +137,7 @@ document.addEventListener("DOMContentLoaded", () =>{
         availableSpace = availableSpace - 1;
     }
 
-    function createSquares() {
-        const gameBoard = document.getElementById("board");
-
-        for (let index=0; index < 30; index++) {
-            let square = document.createElement("div");
-            square.classList.add("square");
-            square.classList.add("animate__animated");
-            square.setAttribute("id", index + 1);
-            gameBoard.appendChild(square);
-        }
-    }
+    
 
     for (let i = 0; i < keys.length; i++) {
         keys[i].onclick = ({ target }) => {
