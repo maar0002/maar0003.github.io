@@ -1,4 +1,7 @@
+
+
 document.addEventListener("DOMContentLoaded", () =>{
+
     createSquares();
 
     const keys = document.querySelectorAll(".keyboard-row button");
@@ -53,6 +56,7 @@ document.addEventListener("DOMContentLoaded", () =>{
 
         if (currentWordArr.length !==5) {
             window.alert("word must be 5 letters");
+            currentWordArr = 0;
         }
 
         const currentWord = currentWordArr.join('');
