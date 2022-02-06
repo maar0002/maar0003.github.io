@@ -1,7 +1,8 @@
 
 
-document.addEventListener("DOMContentLoaded", () =>{
 
+document.addEventListener("DOMContentLoaded", () =>{
+    
     createSquares();
 
     const keys = document.querySelectorAll(".keyboard-row button");
@@ -12,7 +13,10 @@ document.addEventListener("DOMContentLoaded", () =>{
     let word = 'pupil';
     let guessedWordCount = 0;
 
-   
+    document.querySelector('#reload')
+    .addEventListener('click', () => {
+    window.location.reload(true);
+    })
 
     function getCurrentWordArr() {
         const numberOfGuessedWords = guessedWords.length;
