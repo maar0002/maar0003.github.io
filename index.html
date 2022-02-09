@@ -21,7 +21,8 @@
     <div id="game">
       <header>
         <i class="far fa-question-circle" id="help"></i>
-        <h1 class="title">NOT WORDLE</h1>
+        <h1 class="title" id="title">NOT WORDLE</h1>
+        <i class="fas fa-cog" id="settings"></i>
         <i class="fas fa-chart-bar" id="stats"></i>
         <!-- <button id="reload">Update Word</button> -->
       </header>
@@ -70,40 +71,48 @@
       </div>
     </div>
 
-    <div id="help-modal" class="modal">
-      <div class="modal-content">
-        <span class="close" id="close-help">&times;</span>
-
-        <p>Try to guess the word in 6 or less tries.</p>
-
-        <p>Each guess must be a valid 5 letter word. Hit enter to submit</p>
-
-        <p>After each guess, the color will change to show how close your guess was</p>
-
-        <img src="img/examples.png" id="examples">
-
-        <hr>
-
-        <p>One new word a day keeps the doctor away</p>
+      <div id="help-modal" class="modal">
+        <div class="modal-content">
+          <span class="close" id="close-help">&times;</span>
+  
+          <p>Try to guess the word in 6 or less tries.</p>
+  
+          <p>Each guess must be a valid 5 letter word. Hit enter to submit</p>
+  
+          <p>After each guess, the color will change to show how close your guess was</p>
+  
+          <img src="img/examples.png" id="examples">
+  
+          <hr>
+  
+          <p>One new word a day keeps the doctor away</p>
+        </div>
       </div>
-    </div>
-
-    <div id="stats-modal" class="modal">
-      <div class="modal-content">
-        <span class="close" id="close-stats">&times;</span>
-
-        <h2>STATS</h2>
-
-        <h3><strong>Total</strong>: <span id="total-played"></span></h3>
-
-        <h3><strong>Wins</strong>: <span id="total-wins"></span></h3>
-
-        <h3><strong>Win %</strong>: <span id="win-percentage"></span></h3>
-
-        <h3><strong>Current Streak</strong>: <span id="current-streak"></span></h3>
-
+  
+      <div id="settings-modal" class="modal">
+        <div class="modal-content">
+          <span class="close" id="close-settings">&times;</span>
+  
+          <p id="theme-color"><strong>Theme</strong>: <span id="light">Light</span> <i class="fas fa-toggle-off hidden" id="theme-light"></i> <i class="fas fa-toggle-on" id="theme-dark"></i> <span id="dark">Dark</span> </p>
+        </div>
       </div>
-    </div>
+  
+      <div id="stats-modal" class="modal">
+        <div class="modal-content">
+          <span class="close" id="close-stats">&times;</span>
+  
+          <h2>STATS</h2>
+  
+          <h3><strong>Total</strong>: <span id="total-played"></span></h3>
+  
+          <h3><strong>Wins</strong>: <span id="total-wins"></span></h3>
+  
+          <h3><strong>Win %</strong>: <span id="win-percentage"></span></h3>
+  
+          <h3><strong>Current Streak</strong>: <span id="current-streak"></span></h3>
+  
+        </div>
+      </div>
   </div>
 </body>
 

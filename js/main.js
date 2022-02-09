@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
     createSquares();
     shuffleArray(words);
     initHelpModal();
+    initSettingsModal();
     initStatsModal();
 
     const keys = document.querySelectorAll(".keyboard-row button");
@@ -196,7 +197,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function handleDeleteLetter() {
         const currentWordArr = getCurrentWordArr();
-        const removedLetter = currentWordArr.pop();
+         
+
+        if (!currentWordArr.length) {
+            return;
+        }
+
+        currentWordArr.pop();
 
         guessedWords[guessedWords.length - 1] = currentWordArr;
 
@@ -248,6 +255,50 @@ document.addEventListener("DOMContentLoaded", () => {
                 modal.style.display = "none";
             }
         });
+    }
+
+    function initSettingsModal() {
+        const modal = document.getElementById("settings-modal");
+
+        const btn = document.getElementById("settings");
+
+        const span = document.getElementById("close-settings");
+
+        const themeDark = document.getElementById('theme-dark');
+
+        const themeLight = document.getElementById('theme-light');
+
+
+        btn.addEventListener("click", function () {
+            modal.style.display = "block";
+
+        });
+
+        span.addEventListener("click", function () {
+            modal.style.display = "none";
+        });
+
+        themeDark.addEventListener("click", function () {
+            themeDark.style.display = "none";
+            themeLight.style.display = "inline";
+            document.getElementById("container").classList.toggle('light');
+            document.getElementById("title").classList.toggle('light');
+        })
+
+        themeLight.addEventListener("click", function () {
+            themeLight.style.display = "none"
+            themeDark.style.display = "inline";
+            document.getElementById("container").classList.toggle('light');
+            document.getElementById("title").classList.toggle('light');
+           
+        })
+
+
+        window.addEventListener("click", function (event) {
+            if (event.taget == modal) {
+                modal.style.display = "none";
+            }
+        })
     }
 
     function initStatsModal() {

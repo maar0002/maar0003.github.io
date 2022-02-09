@@ -16,6 +16,11 @@ body {
     flex-direction: column;
 }
 
+#container.light {
+    background-color: #ffffff;
+    color: black;
+}
+
 #game {
     width: 100%;
     max-width: 500px;
@@ -31,11 +36,22 @@ header {
     border-bottom: 1px solid rgb(58, 58, 60);
 }
 
+#settings,
 #help,
-#stats {
+#stats
+ {
     color: rgb(58, 58, 60);
     font-size: 1.5rem;
     cursor: pointer;
+}
+
+#theme-color{
+    font-size: 1.5rem;
+    
+}
+
+#theme-color span, i{
+    margin-left: 10px;
 }
 
 .title {
@@ -44,6 +60,10 @@ header {
     font-weight: bold;
     margin: 0.4rem 0;
     text-align: center;
+}
+
+.title.light{
+    color: black;
 }
 
 #board-container {
@@ -103,6 +123,10 @@ header {
     user-select: none;
 }
 
+#keyboard-container.light{
+    color: black;
+}
+
 .keyboard-row button.wide-button {
     flex-grow: 1.5;
 }
@@ -124,6 +148,10 @@ header {
     background-color: rgba(0, 0, 0, 0.7);
 }
 
+.modal.light {
+    background-color: white;
+}
+
 .modal-content {
     background-color: rgb(18, 18, 19);
     margin: 5% auto;
@@ -131,6 +159,11 @@ header {
     width: 80%;
     color: gainsboro;
     max-width: 500px;
+}
+
+.modal-content.light{
+    background-color: white;
+    color: black;
 }
 
 .modal-content hr {
