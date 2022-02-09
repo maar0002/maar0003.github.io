@@ -134,6 +134,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         let wordMatch = false;
 
+        
+
         for (let i = 0; i < words.length; i++) {
             let word = words[i];
             if (word == currentWord) {
@@ -256,6 +258,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     }
+    
 
     function initSettingsModal() {
         const modal = document.getElementById("settings-modal");
@@ -268,7 +271,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const themeLight = document.getElementById('theme-light');
 
-
         btn.addEventListener("click", function () {
             modal.style.display = "block";
 
@@ -279,19 +281,61 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         themeDark.addEventListener("click", function () {
+
+            localStorage.setItem("theme", false);
+
             themeDark.style.display = "none";
             themeLight.style.display = "inline";
             document.getElementById("container").classList.toggle('light');
             document.getElementById("title").classList.toggle('light');
+
+            for (let index = 1; index < 29; index++) {
+                document.getElementById("key" + index).classList.toggle('light');
+            }
+
+            for (let index = 0; index < 30; index++) {
+               document.getElementById(index + 1).classList.toggle('light');
+            }
+
+            
         })
 
         themeLight.addEventListener("click", function () {
+
+            localStorage.setItem("theme", true);
+
             themeLight.style.display = "none"
             themeDark.style.display = "inline";
             document.getElementById("container").classList.toggle('light');
             document.getElementById("title").classList.toggle('light');
+
+            for (let index = 1; index < 29; index++) {
+                document.getElementById("key" + index).classList.toggle('light');
+            }
            
+            for (let index = 0; index < 30; index++) {
+                document.getElementById(index + 1).classList.toggle('light');
+             }
+
+            
         })
+
+        if (localStorage.getItem("theme") == 'false') {
+            themeDark.style.display = "none";
+            themeLight.style.display = "inline";
+            document.getElementById("container").classList.toggle('light');
+            document.getElementById("title").classList.toggle('light');
+
+            for (let index = 1; index < 29; index++) {
+                document.getElementById("key" + index).classList.toggle('light');
+            }
+
+            for (let index = 0; index < 30; index++) {
+               document.getElementById(index + 1).classList.toggle('light');
+            }
+
+            localStorage.setItem("theme", false);
+        }
 
 
         window.addEventListener("click", function (event) {
@@ -300,6 +344,45 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         })
     }
+
+    //beta code
+
+    // const themeDark = document.getElementById('theme-dark');
+
+    // const themeLight = document.getElementById('theme-light');
+
+    // if (localStorage.getItem("theme") == 'false') {
+    //         themeDark.style.display = "none";
+    //         themeLight.style.display = "inline";
+    //         document.getElementById("container").classList.toggle('light');
+    //         document.getElementById("title").classList.toggle('light');
+
+    //         for (let index = 1; index < 29; index++) {
+    //             document.getElementById("key" + index).classList.toggle('light');
+    //         }
+
+    //         for (let index = 0; index < 30; index++) {
+    //            document.getElementById(index + 1).classList.toggle('light');
+    //         }
+
+    //         localStorage.setItem("theme", false);
+    // } 
+    // else {
+    //     themeLight.style.display = "none"
+    //     themeDark.style.display = "inline";
+    //     document.getElementById("container").classList.toggle('light');
+    //     document.getElementById("title").classList.toggle('light');
+
+    //     for (let index = 1; index < 29; index++) {
+    //         document.getElementById("key" + index).classList.toggle('light');
+    //     }
+       
+    //     for (let index = 0; index < 30; index++) {
+    //         document.getElementById(index + 1).classList.toggle('light');
+    //      }
+       
+    //      localStorage.setItem("theme", true);
+    // }
 
     function initStatsModal() {
         const modal = document.getElementById("stats-modal");

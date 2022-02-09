@@ -90,9 +90,12 @@ header {
     font-weight: bold;
     color: whitesmoke;
     text-transform: uppercase;
-
     display: flex;
     justify-content: center;
+}
+
+.square.light{
+    color: black;
 }
 
 #keyboard-container {
@@ -123,8 +126,9 @@ header {
     user-select: none;
 }
 
-#keyboard-container.light{
+button.light {
     color: black;
+    background-color: rgb(202, 202, 202);
 }
 
 .keyboard-row button.wide-button {
